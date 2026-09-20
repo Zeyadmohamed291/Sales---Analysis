@@ -56,25 +56,30 @@ with st.sidebar:
     
     # Date Filters
     available_years = sorted(df['Year'].dropna().unique().tolist())
-    years = st.multiselect("Year", options=available_years, default=[])
+    years = st.multiselect("Year", options=available_years, default=[], key="filter_year")
     
     # Geography Filters
     available_regions = sorted(df['Region'].dropna().unique().tolist())
-    regions = st.multiselect("Country / Region", options=available_regions, default=[])
+    regions = st.multiselect("Country / Region", options=available_regions, default=[], key="filter_region")
     
     # Product Filters
     available_categories = sorted(df['Category'].dropna().unique().tolist())
-    categories = st.multiselect("Product Category", options=available_categories, default=[])
+    categories = st.multiselect("Product Category", options=available_categories, default=[], key="filter_category")
     
     # Sales Filters
     available_supervisors = sorted(df['SupervisorName'].dropna().unique().tolist())
-    supervisors = st.multiselect("Supervisor", options=available_supervisors, default=[])
+    supervisors = st.multiselect("Supervisor", options=available_supervisors, default=[], key="filter_supervisor")
     
     # Customer Filters
     available_genders = sorted(df['Gender'].dropna().unique().tolist())
-    genders = st.multiselect("Customer Gender", options=available_genders, default=[], format_func=lambda x: "Male" if x == 'M' else ("Female" if x == 'F' else x))
+    genders = st.multiselect("Customer Gender", options=available_genders, default=[], format_func=lambda x: "Male" if x == 'M' else ("Female" if x == 'F' else x), key="filter_gender")
     
     if st.button("Reset Filters"):
+        st.session_state["filter_year"] = []
+        st.session_state["filter_region"] = []
+        st.session_state["filter_category"] = []
+        st.session_state["filter_supervisor"] = []
+        st.session_state["filter_gender"] = []
         st.rerun()
 
 # ==========================================
