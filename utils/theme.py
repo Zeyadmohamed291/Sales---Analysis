@@ -34,7 +34,6 @@ def apply_custom_css():
         
         /* Hide Streamlit Defaults */
         #MainMenu {{visibility: hidden;}}
-        header {{visibility: hidden;}}
         footer {{visibility: hidden;}}
         .stDeployButton {{display:none;}}
         
